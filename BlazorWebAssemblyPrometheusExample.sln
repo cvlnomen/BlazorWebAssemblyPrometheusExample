@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyPrometheusExample.Server", "BlazorWebAssemblyPrometheusExample\Server\BlazorWebAssemblyPrometheusExample.Server.csproj", "{78ADC670-AF97-4547-92E5-B4ACD68C71C8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyPrometheusExample.Server", "BlazorWebAssemblyPrometheusExample\Server\BlazorWebAssemblyPrometheusExample.Server.csproj", "{78ADC670-AF97-4547-92E5-B4ACD68C71C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyPrometheusExample.Client", "BlazorWebAssemblyPrometheusExample\Client\BlazorWebAssemblyPrometheusExample.Client.csproj", "{D35F2F41-4029-4CB9-9972-5E33A1FCA93F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyPrometheusExample.Client", "BlazorWebAssemblyPrometheusExample\Client\BlazorWebAssemblyPrometheusExample.Client.csproj", "{D35F2F41-4029-4CB9-9972-5E33A1FCA93F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorWebAssemblyPrometheusExample.Shared", "BlazorWebAssemblyPrometheusExample\Shared\BlazorWebAssemblyPrometheusExample.Shared.csproj", "{BD9AD6E8-DDC8-45F4-A118-3C1BE9CB4632}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyPrometheusExample.Shared", "BlazorWebAssemblyPrometheusExample\Shared\BlazorWebAssemblyPrometheusExample.Shared.csproj", "{BD9AD6E8-DDC8-45F4-A118-3C1BE9CB4632}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

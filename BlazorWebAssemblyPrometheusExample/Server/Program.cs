@@ -1,6 +1,6 @@
 using Prometheus;
 
-namespace BlazorWebAssemblyPrometheusExample
+namespace BlazorWebAssemblyPrometheusExample.Server
 {
     public class Program
     {
@@ -38,6 +38,13 @@ namespace BlazorWebAssemblyPrometheusExample
             app.MapRazorPages();
             app.MapControllers();
             app.MapFallbackToFile("index.html");
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapMetrics();
+                //TODO deze MapControllers is misschien niet nodig
+                endpoints.MapControllers();
+            });
 
             app.Run();
         }
