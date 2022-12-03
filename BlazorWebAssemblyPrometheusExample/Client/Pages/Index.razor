@@ -1,7 +1,30 @@
 ﻿@page "/"
+@inject HttpClient Http
 
 <PageTitle>Index</PageTitle>
 
-<h1>Hello, world!</h1>
+<h1>Raw metrics</h1>
 
-Welcome to your new app.
+<button class="btn btn-primary fixed-bottom btn-sm" @onclick="UpdateMetrics">Update</button>
+
+<p class="border">@_metrics</p>
+
+@code {
+	private string? _metrics;
+	private bool _isUpdating;
+
+	protected override async Task OnInitializedAsync()
+	{
+		await UpdateMetrics();
+	}
+
+	private async Task UpdateMetrics()
+	{
+		if (!_isUpdating)
+		{
+			_isUpdating = true;
+			_metrics = await Http.GetStringAsync("metrics");
+			_isUpdating = false;
+		}
+	}
+}
