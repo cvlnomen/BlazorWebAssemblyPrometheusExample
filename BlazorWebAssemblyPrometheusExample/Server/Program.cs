@@ -28,23 +28,22 @@ namespace BlazorWebAssemblyPrometheusExample.Server
             }
 
             app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseHttpMetrics(options =>
+            {
+                // This will preserve only the first digit of the status code.
+                // For example: 200, 201, 203 -> 2xx
+                options.ReduceStatusCodeCardinality();
+            });
+            app.MapMetrics();
+            //app.UseMetricServer();
 
             app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
 
-            app.UseRouting();
-            app.UseHttpMetrics();
-
             app.MapRazorPages();
             app.MapControllers();
             app.MapFallbackToFile("index.html");
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapMetrics();
-                //TODO deze MapControllers is misschien niet nodig
-                endpoints.MapControllers();
-            });
 
             app.Run();
         }
