@@ -4,28 +4,22 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>69ddf84d-94ed-4fcc-837d-9ed4635a9f0a</UserSecretsId>
+    <UserSecretsId>2bd624c3-4c8b-4305-8eee-729fb853051d</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DockerfileContext>..\..</DockerfileContext>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.11" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.12" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
     <PackageReference Include="prometheus-net" Version="7.0.0" />
     <PackageReference Include="prometheus-net.AspNetCore" Version="7.0.0" />
     <PackageReference Include="prometheus-net.AspNetCore.Grpc" Version="7.0.0" />
     <PackageReference Include="prometheus-net.AspNetCore.HealthChecks" Version="7.0.0" />
-    <PackageReference Include="prometheus-net.NetFramework.AspNet" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Client\BlazorWebAssemblyPrometheusExample.Client.csproj" />
-    <ProjectReference Include="..\Shared\BlazorWebAssemblyPrometheusExample.Shared.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\PublishProfiles\" />
+    <ProjectReference Include="..\Client\BlazorWebAssemblyPrometheus.Client.csproj" />
+    <ProjectReference Include="..\Shared\BlazorWebAssemblyPrometheus.Shared.csproj" />
   </ItemGroup>
 
 
