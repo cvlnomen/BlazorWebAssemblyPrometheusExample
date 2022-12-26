@@ -5,9 +5,9 @@ Example of a docker composed Blazor WebAssembly application that includes suppor
 
 ### Prerequisites
 - Visual Studio 2022
+- Docker
 
 ### Build & Run 
-
 1. Open BlazorWebAssemblyPrometheusExample.sln
 2. Run the "docker-compose" project
 
