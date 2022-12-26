@@ -1,0 +1,15 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "blazorwebassemblyprometheus.server",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
+      "serviceActions": {
+        "blazorwebassemblyprometheus.server": "StartDebugging",
+        "prometheus": "StartWithoutDebugging"
+      }
+    }
+  }
+}

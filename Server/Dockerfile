@@ -2,8 +2,7 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+EXPOSE 4200
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
@@ -21,4 +20,4 @@ RUN dotnet publish "BlazorWebAssemblyPrometheus.Server.csproj" -c Release -o /ap
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "BlazorWebAssemblyPrometheus.Server.dll"]
+ENTRYPOINT ["dotnet", "BlazorWebAssemblyPrometheus.Server.dll","urls=http://0.0.0.0:4200"]

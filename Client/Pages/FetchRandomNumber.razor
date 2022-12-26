@@ -1,0 +1,44 @@
+﻿@page "/fetchrandomnumber"
+@inject HttpClient Http
+
+<PageTitle>Random number</PageTitle>
+
+<h1>Random number</h1>
+
+<p>This component demonstrates fetching data from the server and throwing exceptions.</p>
+
+@if (_randomNumber == null)
+{
+	<p>
+		<em>Loading...</em>
+	</p>
+}
+else
+{
+	<p>Your random number is: @_randomNumber</p>
+	<button class="btn btn-primary" @onclick="Retry">Retry</button>
+}
+
+@code {
+	private int? _randomNumber;
+	private bool _isRunning;
+
+	protected override async Task OnInitializedAsync()
+	{
+		_randomNumber = await Http.GetFromJsonAsync<int>("RandomNumber");
+	}
+
+	private async Task Retry()
+	{
+		if (_isRunning)
+		{
+			return;
+		}
+
+		_isRunning = true;
+
+		_randomNumber = await Http.GetFromJsonAsync<int>("RandomNumber");
+
+		_isRunning = false;
+	}
+}
