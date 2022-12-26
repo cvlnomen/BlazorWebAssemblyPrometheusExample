@@ -1,4 +1,35 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.3.2"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -24,14 +55,14 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": null,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "OvVGUvt4z"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -108,10 +139,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "OvVGUvt4z"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum by(controller) (rate(http_requests_received_total{controller=~\"$controllers\", code=~\"5\\\\d\\\\d|4\\\\d\\\\d\"}[1m]))",
+          "expr": "sum (rate(http_requests_received_total{controller =~ \"$controllers\", code=~\"5\\\\d\\\\d|4\\\\d\\\\d\"}[1m])) by(controller)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -123,7 +154,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "OvVGUvt4z"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -203,7 +234,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "OvVGUvt4z"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "sum(rate(http_requests_received_total{controller =~ \"$controllers\"} [1m])) by (controller)",
@@ -223,18 +254,10 @@
   "templating": {
     "list": [
       {
-        "current": {
-          "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "OvVGUvt4z"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(http_requests_received_total, controller)",
         "hide": 0,
@@ -256,13 +279,13 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "TestDashboard1",
-  "uid": "HvG08vpVk",
-  "version": 5,
+  "uid": "prometheustestdashboard1",
+  "version": 1,
   "weekStart": ""
 }

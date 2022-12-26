@@ -9,7 +9,7 @@ services:
     container_name: blazorwebassemblyprometheus.server
     restart: always
     environment:
-    # TODO also support non development environment
+    # TODO also support non development environments
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:4200
     ports:
@@ -19,7 +19,7 @@ services:
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
       
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v2.41.0
     volumes:
       - ./prometheus/:/etc/prometheus/
       - prometheus_data:/prometheus
@@ -33,12 +33,13 @@ services:
     restart: always
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:9.3.2
     container_name: grafana
     ports:
       - "3000:3000"
     volumes:
       - grafana-storage:/var/lib/grafana
+      - ./grafana/provisioning/datasources:/etc/grafana/provisioning/datasources
     
 volumes:
   grafana-storage:
