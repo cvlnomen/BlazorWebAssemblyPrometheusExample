@@ -7,16 +7,10 @@ namespace BlazorWebAssemblyPrometheus.Server.Controllers
 	[Route("[controller]")]
 	public class WeatherForecastController : ControllerBase
 	{
-		private static readonly string[] Summaries = {
-		"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-	};
-
-		private readonly ILogger<WeatherForecastController> _logger;
-
-		public WeatherForecastController(ILogger<WeatherForecastController> logger)
+		private static readonly string[] Summaries =
 		{
-			_logger = logger;
-		}
+			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
+		};
 
 		[HttpGet]
 		public ActionResult<IEnumerable<WeatherForecast>> Get()
@@ -27,7 +21,7 @@ namespace BlazorWebAssemblyPrometheus.Server.Controllers
 				TemperatureC = Random.Shared.Next(-20, 55),
 				Summary = Summaries[Random.Shared.Next(Summaries.Length)]
 			})
-			.ToArray();
+				.ToArray();
 		}
 	}
 }

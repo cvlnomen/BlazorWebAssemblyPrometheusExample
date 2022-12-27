@@ -6,13 +6,6 @@ namespace BlazorWebAssemblyPrometheus.Server.Controllers
 	[Route("[controller]")]
 	public class RandomNumberController : ControllerBase
 	{
-		private readonly ILogger<RandomNumberController> _logger;
-
-		public RandomNumberController(ILogger<RandomNumberController> logger)
-		{
-			_logger = logger;
-		}
-
 		[HttpGet]
 		public ActionResult<int> Get()
 		{
@@ -23,6 +16,5 @@ namespace BlazorWebAssemblyPrometheus.Server.Controllers
 
 			return Random.Shared.Next();
 		}
-
 	}
 }

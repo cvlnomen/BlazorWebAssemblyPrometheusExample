@@ -7,20 +7,15 @@ namespace BlazorWebAssemblyPrometheus.Server.Controllers
 	[Route("[controller]")]
 	public class TrackingController : ControllerBase
 	{
-		private static readonly Counter PageVisitCounter = Metrics.CreateCounter("total_page_visits", "Number of times users have visited a page.");
-
-		private readonly ILogger<TrackingController> _logger;
-
-		public TrackingController(ILogger<TrackingController> logger)
-		{
-			_logger = logger;
-		}
+		private static readonly Counter RequestCountByPage = Metrics
+			.CreateCounter("razor_page_requests_total", "Number of requests received, by razor page.",
+				labelNames: new[] { "route" });
 
 		[HttpPost]
 		[Route("PageVisited")]
-		public ActionResult Post()
+		public ActionResult Post(string uriLocalPath)
 		{
-			PageVisitCounter.Inc();
+			RequestCountByPage.WithLabels(uriLocalPath).Inc();
 			return Ok();
 		}
 	}

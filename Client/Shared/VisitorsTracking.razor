@@ -7,7 +7,9 @@
 	{
 		try
 		{
-			await Http.PostAsync("Tracking/PageVisited", null);
+			string uriLocalPath = new Uri(NavigationManager.Uri).LocalPath;
+
+			await Http.PostAsync($"Tracking/PageVisited?uriLocalPath={uriLocalPath}", null);
 		}
 		catch (Exception e)
 		{

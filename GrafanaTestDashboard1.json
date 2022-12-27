@@ -209,32 +209,7 @@
             ]
           }
         },
-        "overrides": [
-          {
-            "__systemRef": "hideSeriesFrom",
-            "matcher": {
-              "id": "byNames",
-              "options": {
-                "mode": "exclude",
-                "names": [
-                  "{instance=\"host.docker.internal:4200\", job=\"blazorwebassemblyprometheus.server\"}"
-                ],
-                "prefix": "All except:",
-                "readOnly": true
-              }
-            },
-            "properties": [
-              {
-                "id": "custom.hideFrom",
-                "value": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": true
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -263,7 +238,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "increase(total_page_visits [1m])",
+          "expr": "sum  (rate(razor_page_requests_total{route=~\"$razorpageroutes\"}[1m])) by(route)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -358,7 +333,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(http_requests_received_total{controller =~ \"$controllers\"} [1m])) by (controller)",
+          "expr": "sum by(controller) (rate(http_requests_received_total{controller=~\"$controllers\"}[1m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -396,6 +371,29 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "definition": "label_values(razor_page_requests_total, route)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "razorpages",
+        "multi": true,
+        "name": "razorpageroutes",
+        "options": [],
+        "query": {
+          "query": "label_values(razor_page_requests_total, route)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       }
     ]
   },
@@ -407,6 +405,6 @@
   "timezone": "",
   "title": "TestDashboard1",
   "uid": "prometheustestdashboard1",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
