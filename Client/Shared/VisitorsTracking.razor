@@ -1,0 +1,19 @@
+﻿@inject HttpClient Http
+@inject NavigationManager NavigationManager
+
+@code {
+
+	protected override async Task OnInitializedAsync()
+	{
+		try
+		{
+			await Http.PostAsync("Tracking/PageVisited", null);
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e);
+			// TODO log exception
+		}
+	}
+
+}
