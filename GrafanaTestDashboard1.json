@@ -238,7 +238,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum  (rate(razor_page_requests_total{route=~\"$razorpageroutes\"}[1m])) by(route)",
+          "expr": "sum(increase(razor_page_requests_total{route=~\"$razorpageroutes\"}[1m])) by(route)",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -405,6 +405,6 @@
   "timezone": "",
   "title": "TestDashboard1",
   "uid": "prometheustestdashboard1",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
